@@ -1,0 +1,74 @@
+/* begging */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr 4fr min-content;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+
+button{
+    border: none;
+    background-color: inherit;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition-duration: 200ms;
+}
+
+button:hover{
+    transform: scale(1.2);
+}
+
+/* header and its content */
+.header{
+    background-color: #FEECE2;
+    grid-area: header;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* main and its content */
+.main{
+    background-color: #E2BFB3;
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr minmax(400px, 4fr) 1fr;
+    grid-template-rows: minmax(min-content, 1fr) 4fr ;
+    grid-template-areas: 
+    ". add ."
+    ". books .";
+}
+
+.add{
+    grid-area: add;
+    place-self: center;
+    font-weight: 700;
+}
+
+.books{
+    grid-area: books;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* footer */
+footer{
+    background-color: #E2BFB3;
+    padding: 0.3rem;
+    grid-area: footer;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    opacity: .7;
+}
