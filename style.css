@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+/* for body when the dialog is in display */
+.blured{
+    filter: blur(2px);
+}
+
 body{
     height: 100vh;
     display: grid;
@@ -16,7 +21,8 @@ body{
     "footer";
 }
 
-button{
+.log-in,
+.add{
     border: none;
     background-color: inherit;
     font-size: 1.4rem;
@@ -24,7 +30,8 @@ button{
     transition-duration: 200ms;
 }
 
-button:hover{
+.log-in:hover,
+.add:hover{
     transform: scale(1.2);
 }
 
@@ -71,4 +78,83 @@ footer{
     font-size: 1.1rem;
     font-weight: 700;
     opacity: .7;
+}
+
+/* dialog */
+.info{
+    transform: translate(-50% ,-50%);
+    left: 50%;
+    top: 50%;
+    border: none;
+    padding: 1rem;
+    background-color: #F4EAE0;
+    border-radius: 13px;
+    filter: drop-shadow(10px 10px 10px black);
+}
+
+fieldset{
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+legend{
+    margin-inline: auto;
+    padding-inline: 10px;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+label{
+    display: block;
+    font-size: 1.2rem;
+}
+
+input{
+    font-size: 1.2rem;
+    border-radius: 14px;
+    padding: 5px;
+    background-color: inherit;
+}
+
+.check{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#read{
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: #FFBE98;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons > button{
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid #F4DFC8;
+    background-color: #F4DFC8;
+    transition-duration: 200ms;
+}
+
+.add-book:hover,
+.cancel:hover{
+    transform: scale(1.1);
+}
+
+/*the arrows at the input for pages are not show  */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
