@@ -30,8 +30,17 @@ body{
     transition-duration: 200ms;
 }
 
+.toggle-library{
+    border-radius: 16px;
+    border: 1px solid #FEECE2;
+    background-color: #FEECE2;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+}
+
 .log-in:hover,
-.add:hover{
+.add:hover,
+.toggle-library:hover{
     transform: scale(1.2);
 }
 
@@ -53,7 +62,7 @@ body{
     grid-template-columns: 1fr minmax(400px, 4fr) 1fr;
     grid-template-rows: 100px 4fr ;
     grid-template-areas: 
-    ". add ."
+    ". add toggle"
     ". books .";
 }
 
@@ -63,8 +72,18 @@ body{
     font-weight: 700;
 }
 
+.toggle-library{
+    grid-area: toggle;
+    place-self: center;
+    font-weight: 700;
+}
+
 .books{
     grid-area: books;
+}
+
+.books-read,
+.books-unread{
     padding-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -191,4 +210,9 @@ input::-webkit-inner-spin-button {
     padding: 0.4rem;
     border-radius: 12px;
     background-color: #FFE4C9;
+}
+
+/* extra this for the toggle library */
+.hidden{
+    display: none;
 }

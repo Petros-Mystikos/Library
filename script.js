@@ -1,14 +1,15 @@
 // query selector 
 const body = document.querySelector('body');
 const add = document.querySelector('.add');
-const bookContainer = document.querySelector('.books');
+const readUnread = document.querySelector('.toggle-library');
+const bookContainerRead = document.querySelector('.books-read');
+const bookContainerUnread =document.querySelector('.books-unread');
 const infoDialog = document.querySelector('.info');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const read = document.querySelector('#read');
 const buttons = document.querySelector('.buttons');
-
 
 // addEventListeners
 add.addEventListener('click', () =>{
@@ -29,10 +30,20 @@ buttons.addEventListener('click', e =>{
     body.classList.toggle('blured');
 })
 
+readUnread.addEventListener('click',e =>{
+    if(e.target.textContent === 'READ'){
+        e.target.textContent = 'UNREAD';
+    }
+    else{
+        e.target.textContent = 'READ';
+    }
+    change();
+})
 
 // functions
-function information(){
-
+function change(){
+    bookContainerRead.classList.toggle('hidden');
+    bookContainerUnread.classList.toggle('hidden');
 }
 
 
@@ -67,8 +78,6 @@ function Card(){
     card.appendChild(bookPages);
     card.appendChild(cardButtons);
 
-    bookContainer.appendChild(card);
-
     // add styling 
     card.classList.add('card');
     cardButtons.classList.add('card-buttons');
@@ -84,10 +93,12 @@ function Card(){
     bookPages.textContent = book.pages;
 
     if(book.read){
-        haveRead.textContent = 'I have read it';
+        haveRead.textContent = "I haven't read it";
+        bookContainerRead.appendChild(card);
     }
     else{
-        haveRead.textContent = "I haven't read it";
+        haveRead.textContent = "I have read it";
+        bookContainerUnread.appendChild(card);
     }
     remove.textContent = 'Remove book';
 
@@ -95,14 +106,23 @@ function Card(){
     haveRead.addEventListener('click', e => {
         if(e.target.textContent === 'I have read it'){
             e.target.textContent = "I haven't read it";
+            bookContainerUnread.removeChild(card);
+            bookContainerRead.appendChild(card);
         }
         else{
             e.target.textContent = 'I have read it'
+            bookContainerRead.removeChild(card);
+            bookContainerUnread.appendChild(card);
         }
     })
 
     remove.addEventListener('click', e =>{
-        bookContainer.removeChild(card);
+        if(haveRead.textContent ==="I haven't read it"){
+            bookContainerRead.removeChild(card);
+        }
+        else{
+            bookContainerUnread.removeChild(card);
+        }
     })
 }
 
