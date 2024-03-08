@@ -51,6 +51,7 @@ function Card(){
 
     // create the content
     const card = document.createElement('div');
+    const cardButtons = document.createElement('div');
     const bookTitle = document.createElement('h3');
     const bookAuthor = document.createElement('p');
     const bookPages = document.createElement('p');
@@ -58,13 +59,24 @@ function Card(){
     const remove = document.createElement('button');
     
     // put them in the div and then in the main
+    cardButtons.appendChild(haveRead);
+    cardButtons.appendChild(remove);
+
     card.appendChild(bookTitle);
     card.appendChild(bookAuthor);
     card.appendChild(bookPages);
-    card.appendChild(haveRead);
-    card.appendChild(remove);
+    card.appendChild(cardButtons);
 
     bookContainer.appendChild(card);
+
+    // add styling 
+    card.classList.add('card');
+    cardButtons.classList.add('card-buttons');
+    bookTitle.classList.add('card-title');
+    bookAuthor.classList.add('card-author');
+    bookPages.classList.add('card-pages');
+    haveRead.classList.add('card-haveRead');
+    remove.classList.add('card-remove');
 
     // add the text
     bookTitle.textContent = book.title;
